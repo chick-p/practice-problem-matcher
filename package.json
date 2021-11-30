@@ -6,6 +6,9 @@
   "repository": "ssh://git@github.com/chick-p/practice-reviewdog.git",
   "author": "chick-p <chick.p.1120@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint:md": "markdownlint *.md"
+  },
   "devDependencies": {
     "markdownlint-cli": "^0.30.0"
   }
