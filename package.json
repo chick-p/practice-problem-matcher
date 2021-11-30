@@ -1,0 +1,9 @@
+{
+  "name": "practice-reviewdog",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "repository": "ssh://git@github.com/chick-p/practice-reviewdog.git",
+  "author": "chick-p <chick.p.1120@gmail.com>",
+  "license": "MIT"
+}
