@@ -10,6 +10,21 @@ jobs:
       - name: yarn install
         run: |
           yarn install
-      - name: yarn markdownlint
+      - name: markdownlint
         run: |
-          yarn lint:md
+          git fetch
+          DIFF_FILES=$(git diff remotes/origin/${{ github.base_ref }}..HEAD --diff-filter=ACDMR --name-only "*.md")
+
+          DIFF_EXISTS="false"
+          for f in $DIFF_FILES; do
+            MDLINT_OUT=$(npx markdownlint $f)
+            if [ -n "$MDLINT_OUT" ]; then
+              echo "$MDLINT_OUT"
+              DIFF_EXISTS="true"
+            fi
+          done
+
+          if [ "$DIFF_EXISTS" = "true" ]; then
+            echo "::error::!!markdownlint errors detected!!"
+            exit 1
+          fi
